@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+--if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
@@ -82,4 +82,58 @@ return {
       )
     end,
   },
+  {
+    'fei6409/log-highlight.nvim',
+    config = function()
+        require('log-highlight').setup {}
+    end,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },--TODO:
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+  {
+   'mcauley-penney/visual-whitespace.nvim',
+    config = true
+  },
+  {
+   'sindrets/diffview.nvim',  {
+    "rainbowhxch/accelerated-jk.nvim",
+    config = function()
+      vim.api.nvim_set_keymap("n", "j", "<Plug>(accelerated_jk_gj)", {})
+      vim.api.nvim_set_keymap("n", "k", "<Plug>(accelerated_jk_gk)", {})
+    end,
+    vscode = true,
+  },
+    event = "VeryLazy"
+  },
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
+  {
+    "rainbowhxch/accelerated-jk.nvim",
+    config = function()
+      vim.api.nvim_set_keymap("n", "j", "<Plug>(accelerated_jk_gj)", {})
+      vim.api.nvim_set_keymap("n", "k", "<Plug>(accelerated_jk_gk)", {})
+    end,
+    vscode = true,
+    event = "VeryLazy"
+  }
 }
